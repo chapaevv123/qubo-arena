@@ -1,0 +1,10 @@
+# Technical teachers and applied lessons
+
+| Teacher | Learned and adopted | Implementation and proof | Limit |
+|---|---|---|---|
+| [QMS Network and RPC](https://docs.qms.finance/for-developers/network-and-rpc) | Pin chain ID and official RPC; use standard read-only Ethereum methods and respect shared rate limits. | `app.py` validates 19480, retrieves latest block, caches 15 seconds; browser acceptance checks resolved unavailable state. | Outbound RPC blocked in this sandbox; success path needs a network-enabled run. |
+| [QMS Releases](https://docs.qms.finance/overview/releases) | Separate v0.1 random PoUW problems from v2 client marketplace. | `docs/PROTOCOL_EVIDENCE.md` and QMS UI avoid marketplace claims. | Explorer's QUBO proof format is not yet independently parsed. |
+| [D-Wave dimod QUBO energy](https://docs.dwavequantum.com/en/latest/ocean/api_ref_dimod/generated/dimod.utilities.qubo_energy.html) | Binary objective is sum of supplied Q coefficients plus offset; no implicit symmetrization. | `engine.energy`; `test_asymmetric_convention` proves both off-diagonal entries count once. | `dimod` itself does no input checking; Arena adds strict validation. |
+| [D-Wave BQM models](https://docs.dwavequantum.com/en/latest/ocean/api_ref_dimod/models.html) | Distinguish linear diagonal and pairwise terms; document variable domain. | `engine.py`, Methodology page, fixtures; exact enumeration tests every fixture optimum. | No Ising conversion implemented, avoiding spin-convention ambiguity. |
+| [FastAPI error handling](https://fastapi.tiangolo.com/tutorial/handling-errors/) | Return explicit input errors from a typed HTTP boundary. | `InputError` handler produces 422 `INVALID_INPUT`; `test_api_journey` exercises rejection. | API uses explicit validation rather than Pydantic models to keep the small engine shared and transparent. |
+| [Playwright browser automation](https://playwright.dev/docs/intro) | Exercise the real page, exports, validation, responsive layout and console. | `tests/browser_acceptance.mjs` passes against Edge and writes real screenshots. | Browser script assumes Edge at its standard Windows path. |

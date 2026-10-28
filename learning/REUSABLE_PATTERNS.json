@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "patterns": [
+    {"name": "canonical-computation-receipt", "implementation": "engine.py:receipt", "evidence": "tests/test_engine.py:test_reproducible_and_correct", "use": "Bind normalized inputs and calculated output to a versioned SHA-256 digest"},
+    {"name": "provenance-labeled-adapter", "implementation": "app.py:qms_status", "evidence": "tests/browser_acceptance.mjs", "use": "Expose live, unavailable and unverified states without changing local computation"},
+    {"name": "bounded-exact-reference", "implementation": "engine.py:solve", "evidence": "tests/test_engine.py:test_exact_is_minimum", "use": "Certify small-instance optimum and cap exponential work"}
+  ]
+}
